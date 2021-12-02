@@ -2017,10 +2017,24 @@ const one = (input) => () => {
   return count;
 };
 
-const two = (input) => () => "Not implemented";
+const two = (input) => () => {
+  let count = 0;
+  input.forEach((item, index, items) => {
+    const previousWindow = [items[index -1], item, items[index + 1]];
+    const window = [item, items[index + 1], items[index + 2]];
+    
+    const previousSum = previousWindow.reduce((a, c) => a + c, 0);
+    const sum = window.reduce((a, c) => a + c, 0);
+
+    if (sum > previousSum) {
+      count += 1;
+    }
+  });
+  return count;
+};
 
 const partOne = one(realInput);
-const partTwo = two();
+const partTwo = two(realInput);
 
 console.log("Part 1: ", partOne());
 console.log("Part 2: ", partTwo());

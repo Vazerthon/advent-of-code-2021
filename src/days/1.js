@@ -2028,7 +2028,21 @@ const one = (input) => () => {
   return count;
 }
 
-const two = (input) => () => "Not implemented";
+const two = (input) => () => {
+  let count = 0;
+  input.forEach((item, index, items) => {
+    const previousWindow = [items[index -1], item, items[index + 1]]
+    const window = [item, items[index + 1], items[index + 2]]
+    
+    const previousSum = previousWindow.reduce((a, c) => a + c, 0);
+    const sum = window.reduce((a, c) => a + c, 0);
+
+    if (sum > previousSum) {
+      count += 1;
+    }
+  });
+  return count;
+}
 
 export const partOne = one(realInput);
-export const partTwo = two(testInput);
+export const partTwo = two(realInput);
