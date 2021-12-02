@@ -1,4 +1,11 @@
-'use strict';
+const testInput = [
+  ['forward', 5],
+  ['down', 5],
+  ['forward', 8],
+  ['up', 3],
+  ['down', 8],
+  ['forward', 2],
+];
 
 const realInput = [
     ['forward', 2],
@@ -1037,8 +1044,5 @@ const two = (input) => () => {
   return horizontal * depth;
 };
 
-const partOne = one(realInput);
-const partTwo = two(realInput);
-
-console.log("Part 1: ", partOne());
-console.log("Part 2: ", partTwo());
+export const partOne = one(realInput);
+export const partTwo = two(realInput);
